@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 320" fill="none">
+  <defs>
+    <radialGradient id="rShadow">
+      <stop offset="0" stop-color="#1c1f22" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#1c1f22" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="riso" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="2" seed="3" result="wob"/>
+      <feDisplacementMap in="SourceGraphic" in2="wob" scale="4" xChannelSelector="R" yChannelSelector="G" result="shape"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="noise"/>
+      <feDiffuseLighting in="noise" surfaceScale="1.6" lighting-color="#fff" result="light">
+        <feDistantLight azimuth="235" elevation="55"/>
+      </feDiffuseLighting>
+      <feComponentTransfer in="light" result="soft">
+        <feFuncR type="linear" slope=".36" intercept=".68"/>
+        <feFuncG type="linear" slope=".36" intercept=".68"/>
+        <feFuncB type="linear" slope=".36" intercept=".68"/>
+      </feComponentTransfer>
+      <feBlend in="shape" in2="soft" mode="multiply" result="tex"/>
+      <feComposite in="tex" in2="shape" operator="in"/>
+    </filter>
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="226" cy="290" rx="170" ry="16" fill="url(#rShadow)"/>
+
+  <g filter="url(#riso)">
+    <!-- water spout: burnt-orange accent, flat dots instead of a gradient spray -->
+    <path d="M172 86c-4-17-3-32 5-46" stroke="#D9692F" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="151" cy="42" r="9" fill="#D9692F"/>
+    <circle cx="197" cy="30" r="7.5" fill="#E48A55"/>
+    <circle cx="138" cy="66" r="5.5" fill="#E48A55"/>
+    <circle cx="208" cy="58" r="6.5" fill="#D9692F"/>
+
+    <!-- tail, one flat darker navy tone for simple overlap depth -->
+    <path d="M375 118c-18-19-51-27-67-53 27 2 52 10 66 29 10-21 33-33 62-41-10 29-37 49-61 65Z" fill="#16283F"/>
+
+    <!-- body, single flat navy field -->
+    <path d="M48 196C40 129 111 82 206 84c71 2 108 35 136 49 14 7 22-4 22-21h14c6 35-4 66-39 84-43 23-100 49-172 51-71 2-113-14-119-51Z" fill="#22395C"/>
+
+    <!-- belly patch, off-white with a few simple pleat lines -->
+    <g clip-path="url(#riso-belly-clip)">
+    </g>
+    <clipPath id="riso-belly-clip">
+      <path d="M48 196C40 129 111 82 206 84c71 2 108 35 136 49 14 7 22-4 22-21h14c6 35-4 66-39 84-43 23-100 49-172 51-71 2-113-14-119-51Z"/>
+    </clipPath>
+    <g clip-path="url(#riso-belly-clip)">
+      <path d="M30 206c59 26 158 30 227 16 49-9 84-25 118-45l20 122H20Z" fill="#F5F1E8"/>
+      <g stroke="#C9BFA9" stroke-width="3" stroke-linecap="round" opacity=".8">
+        <path d="M77 229c61 16 140 14 209-6"/>
+        <path d="M95 241c55 12 118 10 174-4"/>
+        <path d="M120 251c39 6 87 5 126-4"/>
+      </g>
+    </g>
+
+    <!-- pectoral fin -->
+    <path d="M188 220c-12 29 0 57 33 57-4-18-8-39-8-57Z" fill="#16283F"/>
+
+    <!-- face: simple dot eye, minimal linework -->
+    <path d="M103 149c8-6 21-6 27 0" stroke="#16283F" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="117" cy="162" r="9.5" fill="#191512"/>
+    <circle cx="113.5" cy="158" r="2.8" fill="#F5F1E8" opacity=".9"/>
+    <path d="M53 199c35 12 73 12 106 0" stroke="#16283F" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+  </g>
+</svg>
